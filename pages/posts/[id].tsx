@@ -3,6 +3,7 @@ import {useRouter} from "next/router";
 import {useState, useEffect} from 'react';
 import axios from "axios";
 import styled from 'styled-components';
+import {Post} from "../../interfaces/post";
 
 const PostTitle = styled.h1`
 text-align:center;
@@ -17,9 +18,11 @@ const Wrapper = styled.div`
 width:80%;
 margin:0 auto;
 `;
-export default function Post({post:serverPost}) {
+interface PostPageProps {
+    post: Post
+}
+export default function MyPost({post:serverPost}:PostPageProps) {
     const router = useRouter();
-
     const [post, setPosts] = useState(serverPost);
     useEffect(() => {
         async function load() {
@@ -50,7 +53,7 @@ export default function Post({post:serverPost}) {
         </MainLayout>
     )
 }
-Post.getInitialProps = async ({query, req}) => {
+MyPost.getInitialProps = async ({req}) => {
     if (!req) {
         return {
             post: null

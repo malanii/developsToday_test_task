@@ -3,11 +3,12 @@ import styled from 'styled-components';
 import React from "react";
 import {addPost, unAdded} from "../../redux/actions/postsActions";
 import {useDispatch, useSelector} from "react-redux";
-import { useForm } from "react-hook-form";
+import {useForm} from "react-hook-form";
+import {Post} from "../../interfaces/post";
 
 const Input = styled.input.attrs(props => ({
     type: "text",
-   size: props.size || "2rem",
+    size: props.size || "2rem",
 }))`
   border: 2px solid palevioletred;
   width: 100%;
@@ -18,6 +19,7 @@ const Input = styled.input.attrs(props => ({
 const Form = styled.form`
 display:block;
 width:60%;
+padding-top:5rem;
 text-align:center;
 margin: 0 auto;
 box-sizing:border-box;
@@ -46,37 +48,38 @@ text-align:center;
 color:#6C6378;
 font-weight: bold;
 `;
-
 export default function AddPost() {
-    const { register, handleSubmit, errors } = useForm();
+    const {register, handleSubmit, errors} = useForm<Post>();
     const dispatch = useDispatch();
     const addedPost = useSelector(state => state.posts.newPost);
 
-    const onSubmit = (data, e) => {
+    const onSubmit = (data:Post, e) => {
         dispatch(addPost(data));
         e.target.reset();
-        setTimeout(()=>{ dispatch(unAdded(false))}, 5000)
+        setTimeout(() => {
+            dispatch(unAdded(false))
+        }, 5000)
     };
 
-if(addedPost){
-    return (
-        <MainLayout>
-            <Message>Congratulations! You have just added new post :)</Message>
-        </MainLayout>
-    )
-}
+    if (addedPost) {
+        return (
+            <MainLayout>
+                <Message>Congratulations! You have just added new post :)</Message>
+            </MainLayout>
+        )
+    }
     return (
         <MainLayout title={"Add Post"}>
             <Form onSubmit={handleSubmit(onSubmit)}>
                 <Label>Title</Label>
                 {errors.title && <ErrorMessage>This field is required</ErrorMessage>}
-                <Input type="text" name="title" ref={register({ required: true })} />
+                <Input type="text" name="title" ref={register({required: true})}/>
 
                 <Label>Description</Label>
                 {errors.body && <ErrorMessage>This field is required</ErrorMessage>}
-                <Input type="text" name="body" ref={register({ required: true, min: 10 })} />
+                <Input type="text" name="body" ref={register({required: true, min: 10})}/>
 
-                <ButtonForm type="submit" >Send</ButtonForm>
+                <ButtonForm type="submit">Send</ButtonForm>
             </Form>
         </MainLayout>
     )

@@ -1,11 +1,13 @@
 // import {HYDRATE} from "next-redux-wrapper";
+import {State} from '../../interfaces/state'
+import {AnyAction} from "redux";
 
-const initialState ={
+const initialState:State ={
     posts:[],
     newPost: false
 };
 
-export const postsReducer = (state = initialState, action) => {
+export const postsReducer = (state: State = initialState, action: AnyAction) => {
     switch (action.type) {
         // case HYDRATE:
         //     if (action.payload.posts === []) delete action.payload.posts;
