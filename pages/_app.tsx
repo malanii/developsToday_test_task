@@ -1,10 +1,11 @@
 import {wrapper} from '../redux/store'
 import {getPosts} from "../redux/actions/postsActions";
-import '../styles/global.css'
+import '../styles/global.css';
+import  { AppProps  } from 'next/app'
 
 
 
-const MyApp = ({Component, pageProps, store}) => {
+const MyApp = ({Component, pageProps}: AppProps) => {
     return (
         <Component {...pageProps} />
     );
