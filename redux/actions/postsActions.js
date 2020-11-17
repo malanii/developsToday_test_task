@@ -15,9 +15,9 @@ export const successfulAdded = (boolean)=>{
 
 };
 
-export const unSuccessfulAdded = (boolean)=>{
+export const unAdded = (boolean)=>{
     return {
-        type: 'ADD_POST_UNSUCCESSFUL',
+        type: 'UNADDED_POST',
         payload: boolean
     }
 

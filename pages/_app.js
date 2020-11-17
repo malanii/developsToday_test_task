@@ -1,6 +1,8 @@
 import {wrapper} from '../redux/store'
-import {getPosts} from "../redux/actions/postsAction";
+import {getPosts} from "../redux/actions/postsActions";
 import '../styles/global.css'
+
+
 
 const MyApp = ({Component, pageProps, store}) => {
     return (

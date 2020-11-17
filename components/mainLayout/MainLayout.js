@@ -1,8 +1,22 @@
 import Head from "next/head";
 import NavBar from "../navBar/NavBar";
 import Footer from "../footer/Footer";
-// import styled from 'styled-components';
+import styled from 'styled-components';
 
+const VerticalCenter = styled.main`
+height: 76vh;
+display:flex;
+justify-content: center;
+ flex-direction:column;
+`;
+const FooterWrapper = styled.footer`
+position:absolute;
+bottom:0;
+background-color: #DAC9F2;
+text-align:center;
+width:100%;
+clear: both;
+`;
 export default function MainLayout({children, title = 'Home'}) {
     return (
         <>
@@ -12,15 +26,17 @@ export default function MainLayout({children, title = 'Home'}) {
                 <meta name="description" content="I practice here to write ssr app"/>
                 <meta charSet='utf-8' />
             </Head>
+
             <nav>
                 <NavBar/>
             </nav>
-            <main>
-                {children}
-            </main>
-            <footer >
+            <VerticalCenter>
+                  {children}
+            </VerticalCenter>
+            <FooterWrapper>
               <Footer/>
-            </footer>
+            </FooterWrapper>
+
         </>
     )
 

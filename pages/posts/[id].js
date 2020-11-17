@@ -36,7 +36,7 @@ export default function Post({post:serverPost}) {
     if(!post){
         return (
             <>
-                <p>Грузится.....</p>
+                <p>Loading.....</p>
             </>
         )
     }

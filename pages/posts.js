@@ -9,7 +9,6 @@ display: flex;
 width: 70%;
 margin: 0 auto;
 flex-wrap:wrap;
-padding-top:2rem;
 `;
 const PoslLink = styled.li`
 list-style-type: none;
@@ -28,6 +27,7 @@ const PostTitle = styled.h1`
 text-align:center;
 color:#6C6378;
 font-weight: bold;
+margin-top:0;
 `;
 
 export default function Posts({posts: serverPosts}) {
@@ -45,7 +45,7 @@ export default function Posts({posts: serverPosts}) {
     if (!posts) {
         return (
             <>
-                <p>Грузится.....</p>
+                <p>Loading.....</p>
             </>
         )
     }

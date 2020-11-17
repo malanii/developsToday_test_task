@@ -1,23 +1,22 @@
 import MainLayout from "../../components/mainLayout/MainLayout";
 import styled from 'styled-components';
 import React from "react";
-import {useState} from 'react';
-import {addPost} from "../../redux/actions/postsAction";
-import {useDispatch} from "react-redux";
+import {addPost, unAdded} from "../../redux/actions/postsActions";
+import {useDispatch, useSelector} from "react-redux";
+import { useForm } from "react-hook-form";
 
 const Input = styled.input.attrs(props => ({
     type: "text",
-    size: props.size || "5px",
+   size: props.size || "2rem",
 }))`
   border: 2px solid palevioletred;
   width: 100%;
-  margin: ${props => props.size};
+  margin-bottom: 1rem; 
+  box-sizing: border-box;
   padding: ${props => props.size};
 `;
-const Form = styled.form.attrs(props => ({
-    onSubmit: props
-}))`
-padding-top: 10rem;
+const Form = styled.form`
+display:block;
 width:60%;
 text-align:center;
 margin: 0 auto;
@@ -31,31 +30,51 @@ const ButtonForm = styled.button`
   background-color: palevioletred;
  padding: 10px 15px;
 `;
-const Title = styled.h1`
+const Label = styled.label`
 color: palevioletred;
+font-size: 2rem;
+`;
+const ErrorMessage = styled.p`
+  &:before {
+    content: "🦄";
+  }
+  color: #6cb9c7;
+  font-weight: bold;
 `;
 
-export default function AddPost(ctx) {
-    const [inputs, setInputs] = useState('');
-    const changeHandler = (event) => {
-        setInputs({...inputs, [event.target.name]: event.target.value})
-    };
+export default function AddPost() {
+    const { register, handleSubmit, errors } = useForm();
     const dispatch = useDispatch();
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        dispatch(addPost(inputs));
-        // console.log('yesssss it worksssss')
+    const addedPost = useSelector(state => state.posts.newPost);
+
+    const onSubmit = (data, e) => {
+        dispatch(addPost(data));
+        e.target.reset();
+        setTimeout(()=>{ dispatch(unAdded(false))}, 5000)
     };
 
-    // console.log(inputs);
+if(addedPost){
     return (
-        <MainLayout title={"Add Post"}>
-            <form onSubmit={handleSubmit}>
-                <Title>We are waiting for your post :)</Title>
-                <Input name='title' value={inputs.title} onChange={changeHandler} placeholder="Add title"/>
-                <Input name='body' value={inputs.body} onChange={changeHandler} placeholder="Add Description"/>
-                <ButtonForm type='submit'>Add Post</ButtonForm>
-            </form>
+        <MainLayout>
+            <p>Congratulations! You have just added new post :)</p>
         </MainLayout>
     )
 }
+    return (
+        <MainLayout title={"Add Post"}>
+            <Form onSubmit={handleSubmit(onSubmit)}>
+                <Label>Title</Label>
+                {errors.title && <ErrorMessage>This field is required</ErrorMessage>}
+                <Input type="text" name="title" ref={register({ required: true })} />
+
+                <Label>Description</Label>
+                {errors.body && <ErrorMessage>This field is required</ErrorMessage>}
+                <Input type="text" name="body" ref={register({ required: true, min: 10 })} />
+
+                <ButtonForm type="submit" >Send</ButtonForm>
+
+            </Form>
+        </MainLayout>
+    )
+}
+
