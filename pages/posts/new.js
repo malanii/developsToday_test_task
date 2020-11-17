@@ -41,6 +41,11 @@ const ErrorMessage = styled.p`
   color: #6cb9c7;
   font-weight: bold;
 `;
+const Message = styled.h1`
+text-align:center;
+color:#6C6378;
+font-weight: bold;
+`;
 
 export default function AddPost() {
     const { register, handleSubmit, errors } = useForm();
@@ -56,7 +61,7 @@ export default function AddPost() {
 if(addedPost){
     return (
         <MainLayout>
-            <p>Congratulations! You have just added new post :)</p>
+            <Message>Congratulations! You have just added new post :)</Message>
         </MainLayout>
     )
 }
@@ -72,7 +77,6 @@ if(addedPost){
                 <Input type="text" name="body" ref={register({ required: true, min: 10 })} />
 
                 <ButtonForm type="submit" >Send</ButtonForm>
-
             </Form>
         </MainLayout>
     )
