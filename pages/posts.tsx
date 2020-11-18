@@ -36,7 +36,7 @@ color:#6C6378;
 font-weight: bold;
 margin-top: 1rem;
 `;
-export const Posts: NextPage = () => {
+export default function Posts() {
     const [posts, setPosts] = useState<Post[]>();
     useEffect(() => {
         async function load() {

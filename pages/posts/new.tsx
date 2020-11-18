@@ -1,5 +1,6 @@
 import MainLayout from "../../components/mainLayout/MainLayout";
 import styled from 'styled-components';
+import React from "react";
 import {addPost, unAdded} from "../../redux/actions/postsActions";
 import {useDispatch, useSelector} from "react-redux";
 import {useForm} from "react-hook-form";
@@ -8,7 +9,7 @@ const Input = styled.input.attrs(props => ({
     type: "text",
     size: props.size || "1rem",
 }))`
-&:focus {
+ &:focus {
     outline: #6cb9c7;
      border-color: #6cb9c7;
   } 
@@ -22,7 +23,7 @@ const Input = styled.input.attrs(props => ({
 const Form = styled.form`
 display:block;
 width:60%;
-padding-top:3rem;
+padding-top:4rem;
 text-align:center;
 margin: 0 auto;
 box-sizing:border-box;
@@ -36,11 +37,10 @@ const ButtonForm = styled.button`
  border-radius: 30px;
  background-color: palevioletred;
  padding: 1rem 2rem;
- 
 `;
 const Label = styled.label`
 color: palevioletred;
-font-size: 1rem;
+font-size: 1.5rem;
 font-weight:bold;
 `;
 const ErrorMessage = styled.p`
@@ -85,6 +85,7 @@ export default function AddPost() {
                 <Label>Description</Label>
                 {errors.body && <ErrorMessage>This field is required</ErrorMessage>}
                 <Input type="text" name="body" ref={register({required: true, min: 10})}/>
+
                 <ButtonForm type="submit">Send</ButtonForm>
             </Form>
         </MainLayout>
