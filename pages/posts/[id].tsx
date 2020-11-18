@@ -33,13 +33,12 @@ export default function MyPost({post:serverPost}:PostPageProps) {
         if(!serverPost){
             load()
         }
-
     }, []);
 
     if(!post){
         return (
             <>
-                <p>Loading.....</p>
+                <Title>Loading.....</Title>
             </>
         )
     }
@@ -49,7 +48,6 @@ export default function MyPost({post:serverPost}:PostPageProps) {
                 <Title>{post.title}</Title>
                 <Text>{post.body}</Text>
             </Wrapper>
-
         </MainLayout>
     )
 }
