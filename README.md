@@ -5,7 +5,7 @@
 First, run the development server:
 
 ```bash
-npm install // to intall node modules
+npm install // to install node modules
 npm run dev
 # or
 yarn dev
