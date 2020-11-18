@@ -5,14 +5,13 @@ import {addPost, unAdded} from "../../redux/actions/postsActions";
 import {useDispatch, useSelector} from "react-redux";
 import {useForm} from "react-hook-form";
 import {Post} from "../../interfaces/post";
-
 const Input = styled.input.attrs(props => ({
     type: "text",
     size: props.size || "2rem",
 }))`
   border: 2px solid palevioletred;
   width: 100%;
-  margin-bottom: 1rem; 
+  margin-bottom: 1rem;
   box-sizing: border-box;
   padding: ${props => props.size};
 `;
@@ -25,11 +24,11 @@ margin: 0 auto;
 box-sizing:border-box;
 `;
 const ButtonForm = styled.button`
-  color: white;
-  font-size: 1em;
-  border: 2px solid palevioletred;
-  border-radius: 3px;
-  background-color: palevioletred;
+ color: white;
+ font-size: 1em;
+ border: 2px solid palevioletred;
+ border-radius: 3px;
+ background-color: palevioletred;
  padding: 10px 15px;
 `;
 const Label = styled.label`
@@ -47,12 +46,12 @@ const Message = styled.h1`
 text-align:center;
 color:#6C6378;
 font-weight: bold;
+margin-top:3rem;
 `;
 export default function AddPost() {
     const {register, handleSubmit, errors} = useForm<Post>();
     const dispatch = useDispatch();
     const addedPost = useSelector(state => state.posts.newPost);
-
     const onSubmit = (data:Post, e) => {
         dispatch(addPost(data));
         e.target.reset();
