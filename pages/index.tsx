@@ -1,4 +1,4 @@
-import {Posts} from "./posts";
+import Posts from "./posts";
 import MainLayout from "../components/mainLayout/MainLayout";
 
  export default function Home() {

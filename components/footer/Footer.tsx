@@ -1,10 +1,10 @@
 import styled from 'styled-components';
-const FooterTitle = styled.p`
+const Title = styled.p`
 color:#6C6378;
 font-size: 1.2rem;
 font-weight: bold;
 `;
-const ExtendedFooterTitle = styled(FooterTitle)`
+const ExtendedTitle = styled(Title)`
 font-size:0.8rem;
 margin-bottom:0;
 padding-bottom:1rem;
@@ -12,9 +12,9 @@ padding-bottom:1rem;
 export default function Footer() {
     return (
         <>
-            <FooterTitle>DevelopsToday</FooterTitle>
-            <FooterTitle>Next.js + React + Redux + TypeScript</FooterTitle>
-            <ExtendedFooterTitle>by junior frontend developer Yana Ignatova</ExtendedFooterTitle>
+            <Title>DevelopsToday</Title>
+            <Title>Next.js + React + Redux + TypeScript</Title>
+            <ExtendedTitle>by junior frontend developer Yana Ignatova</ExtendedTitle>
         </>
     )
 }

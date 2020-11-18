@@ -1,6 +1,5 @@
 import MainLayout from "../../components/mainLayout/MainLayout";
 import styled from 'styled-components';
-import React from "react";
 import {addPost, unAdded} from "../../redux/actions/postsActions";
 import {useDispatch, useSelector} from "react-redux";
 import {useForm} from "react-hook-form";
