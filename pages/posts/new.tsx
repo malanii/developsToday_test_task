@@ -13,26 +13,31 @@ const Input = styled.input.attrs(props => ({
   margin-bottom: 1rem;
   box-sizing: border-box;
   padding: ${props => props.size};
+  // margin-top: ${props => props.size};
 `;
 const Form = styled.form`
 display:block;
 width:60%;
-padding-top:5rem;
+padding-top:3rem;
 text-align:center;
 margin: 0 auto;
 box-sizing:border-box;
 `;
 const ButtonForm = styled.button`
- color: white;
+&:focus {
+    outline: none;
+  } color: white;
  font-size: 1em;
  border: 2px solid palevioletred;
- border-radius: 3px;
+ border-radius: 30px;
  background-color: palevioletred;
- padding: 10px 15px;
+ padding: 1rem 2rem;
+ 
 `;
 const Label = styled.label`
 color: palevioletred;
 font-size: 2rem;
+font-weight:bold;
 `;
 const ErrorMessage = styled.p`
   &:before {
@@ -76,7 +81,6 @@ export default function AddPost() {
                 <Label>Description</Label>
                 {errors.body && <ErrorMessage>This field is required</ErrorMessage>}
                 <Input type="text" name="body" ref={register({required: true, min: 10})}/>
-
                 <ButtonForm type="submit">Send</ButtonForm>
             </Form>
         </MainLayout>

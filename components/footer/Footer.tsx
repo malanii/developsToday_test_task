@@ -12,7 +12,7 @@ padding-bottom:1rem;
 export default function Footer() {
     return (
         <>
-            <Title>DevelopsToday</Title>
+            <Title>DevelopsToday<span>&#9734;</span></Title>
             <Title>Next.js + React + Redux + TypeScript</Title>
             <ExtendedTitle>by junior frontend developer Yana Ignatova</ExtendedTitle>
         </>
