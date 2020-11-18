@@ -23,7 +23,7 @@ const Input = styled.input.attrs(props => ({
 const Form = styled.form`
 display:block;
 width:60%;
-padding-top:4rem;
+padding-top:3rem;
 text-align:center;
 margin: 0 auto;
 box-sizing:border-box;
