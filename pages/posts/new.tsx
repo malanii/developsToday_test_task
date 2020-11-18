@@ -8,6 +8,10 @@ const Input = styled.input.attrs(props => ({
     type: "text",
     size: props.size || "2rem",
 }))`
+&:focus {
+    outline: #6cb9c7;
+     border-color: #6cb9c7;
+  } 
   border: 2px solid palevioletred;
   width: 100%;
   margin-bottom: 1rem;
