@@ -1,39 +1,47 @@
 import MainLayout from "../../components/mainLayout/MainLayout";
 import styled from 'styled-components';
-import React from "react";
 import {addPost, unAdded} from "../../redux/actions/postsActions";
 import {useDispatch, useSelector} from "react-redux";
 import {useForm} from "react-hook-form";
 import {Post} from "../../interfaces/post";
 const Input = styled.input.attrs(props => ({
     type: "text",
-    size: props.size || "2rem",
+    size: props.size || "1rem",
 }))`
+&:focus {
+    outline: #6cb9c7;
+     border-color: #6cb9c7;
+  } 
   border: 2px solid palevioletred;
   width: 100%;
   margin-bottom: 1rem;
   box-sizing: border-box;
   padding: ${props => props.size};
+  margin-top: ${props => props.size};
 `;
 const Form = styled.form`
 display:block;
 width:60%;
-padding-top:5rem;
+padding-top:3rem;
 text-align:center;
 margin: 0 auto;
 box-sizing:border-box;
 `;
 const ButtonForm = styled.button`
- color: white;
+&:focus {
+    outline: none;
+  } color: white;
  font-size: 1em;
  border: 2px solid palevioletred;
- border-radius: 3px;
+ border-radius: 30px;
  background-color: palevioletred;
- padding: 10px 15px;
+ padding: 1rem 2rem;
+ 
 `;
 const Label = styled.label`
 color: palevioletred;
-font-size: 2rem;
+font-size: 1rem;
+font-weight:bold;
 `;
 const ErrorMessage = styled.p`
   &:before {
@@ -77,7 +85,6 @@ export default function AddPost() {
                 <Label>Description</Label>
                 {errors.body && <ErrorMessage>This field is required</ErrorMessage>}
                 <Input type="text" name="body" ref={register({required: true, min: 10})}/>
-
                 <ButtonForm type="submit">Send</ButtonForm>
             </Form>
         </MainLayout>

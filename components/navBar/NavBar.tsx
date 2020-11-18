@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import NavLink from "./navLink/NavLink";
-
 const Nav = styled.ul`
 margin: 0;
 padding:1rem 3rem;
@@ -11,7 +10,6 @@ justify-content:space-between;
 const NavItem = styled.li`
 list-style-type: none;
 `;
-
 export default function NavBar() {
     return (
         <Nav>

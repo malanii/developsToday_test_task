@@ -4,13 +4,13 @@ import {useState, useEffect} from 'react';
 import axios from "axios";
 import styled from 'styled-components';
 import {Post} from "../../interfaces/post";
-
-const PostTitle = styled.h1`
+import {NextPageContext} from "next";
+const Title = styled.h1`
 text-align:center;
 color:#6C6378;
 font-weight: bold;
 `;
-const PostText = styled.p`
+const Text = styled.p`
 text-align:center;
 color:#6C6378;
 `;
@@ -33,33 +33,36 @@ export default function MyPost({post:serverPost}:PostPageProps) {
         if(!serverPost){
             load()
         }
-
     }, []);
 
     if(!post){
         return (
             <>
-                <p>Loading.....</p>
+                <Title>Loading.....</Title>
             </>
         )
     }
     return (
         <MainLayout title={`Post ${router.query.id}`}>
             <Wrapper>
-                <PostTitle>{post.title}</PostTitle>
-                <PostText>{post.body}</PostText>
+                <Title>{post.title}</Title>
+                <Text>{post.body}</Text>
             </Wrapper>
-
         </MainLayout>
     )
 }
-MyPost.getInitialProps = async ({req}) => {
+interface PostNextPageContext extends NextPageContext{
+    query: {
+        id: string
+    }
+}
+MyPost.getInitialProps = async ({query,req}: PostNextPageContext) => {
     if (!req) {
         return {
             post: null
         }
     }
-    const response = await axios.get('https://simple-blog-api.crew.red/posts');
+    const response = await axios.get(`https://simple-blog-api.crew.red/posts/${query.id}`);
     const post = response.data;
     return {
         post
