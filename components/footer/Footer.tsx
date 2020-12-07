@@ -13,7 +13,7 @@ export default function Footer() {
   return (
     <>
       <Title>
-        DevelopsToday<span>&#9734;</span>
+       Simple posts app<span>&#9734;</span>
       </Title>
       <Title>Next.js + React + Redux + TypeScript</Title>
       <ExtendedTitle>by junior frontend developer Yana Ignatova</ExtendedTitle>
