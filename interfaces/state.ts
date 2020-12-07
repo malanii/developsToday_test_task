@@ -1,7 +1,7 @@
-import {Post} from "./post";
+import { Post } from "./post";
 
 export interface State {
-    posts:Array<Post>,
-    newPost: boolean
-    errors:boolean
+  posts: Array<Post>;
+  newPost: boolean;
+  errors: boolean;
 }
