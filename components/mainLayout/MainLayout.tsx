@@ -21,7 +21,7 @@ export default function MainLayout({ title = "Home", children }) {
   return (
     <Wrapper>
       <Head>
-        <title>{title} | DevelopsToday</title>
+        <title>{title}</title>
         <meta name="keywords" content="next, javascript" />
         <meta name="description" content="I practice here to write ssr app" />
         <meta charSet="utf-8" />
